@@ -5,7 +5,7 @@ from PIL import Image
 # 1. API 키와 지시문 설정
 genai.configure(api_key="AIzaSyDOTAuWFFLp9HF_TQNR0GNS5XdlH0fUKqI")
 model = genai.GenerativeModel(
-    model_name='gemini-3-flash-preview',
+    model_name='gemini-1.5-flash',
     system_instruction="""
 [역할]
 너는 제주도 렌트카 업체의 외국인 및 주한미군 서류 검수 전문가야. 고객이 제출한 서류를 분석하여 대한민국 법규 및 업체 규정에 따른 대여 가능 여부를 엄격하게 판독해.
