@@ -8,7 +8,7 @@ API_KEY = "AIzaSyBsOs2nbWontgAPR9vmUhPd--csj35cPhE"
 genai.configure(api_key=API_KEY)
 
 # 2. 모델 설정 (404 오류 방지를 위해 가장 안정적인 이름 사용)
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-2.5-flash')
 
 # 3. 검수 지시문 (프롬프트)
 prompt_text = """
