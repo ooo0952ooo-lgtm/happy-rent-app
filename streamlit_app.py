@@ -3,7 +3,7 @@ import google.generativeai as genai
 from PIL import Image
 
 # 1. API 키 설정 (선택하신 키 그대로 적용)
-genai.configure(api_key="AIzaSyDOTAuWFFLp9HF_TQNR0GNS5XdlH0fUKqI")
+genai.configure(api_key="AIzaSyDoTAUwFFLp9HF_TQNr0GNS5XdlH0fUKqI")
 
 # 2. 가장 안정적인 모델 선택 (지시문 충돌 방지)
 model = genai.GenerativeModel('gemini-1.5-flash')
