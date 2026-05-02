@@ -4,7 +4,7 @@ from PIL import Image
 
 # 1. API 키 설정 (주인님의 실제 키를 아래 따옴표 안에 넣어주세요)
 # 주의: AI Studio에서 '새 프로젝트'로 키를 다시 발급받는 것을 추천합니다.
-API_KEY = "주인님의_실제_API_키_입력"
+API_KEY = "AIzaSyBsOs2nbWontgAPR9vmUhPd--csj35cPhE"
 genai.configure(api_key=API_KEY)
 
 # 2. 모델 설정 (404 오류 방지를 위해 가장 안정적인 이름 사용)
