@@ -65,7 +65,7 @@ if st.button("검수 시작"):
 st.markdown("---") # 얇은 가로줄을 하나 그어줍니다.
 st.markdown(
     "<div style='text-align: center; color: #b0b0b0; font-size: 13px;'>"
-    "<b>Created by 김성결</b> 💡"
+    "<b>Created by 김성결</b> "
     "</div>", 
     unsafe_allow_html=True
 )
