@@ -2,11 +2,14 @@ import streamlit as st
 import google.generativeai as genai
 from PIL import Image
 
-# 1. API 키와 지시문 설정
+# 1. API 키 설정 (선택하신 키 그대로 적용)
 genai.configure(api_key="AIzaSyDOTAuWFFLp9HF_TQNR0GNS5XdlH0fUKqI")
-model = genai.GenerativeModel(
-    model_name='gemini-1.5-flash',
-    system_instruction="""
+
+# 2. 가장 안정적인 모델 선택 (지시문 충돌 방지)
+model = genai.GenerativeModel('gemini-1.5-flash')
+
+# 3. 프롬프트(지시문) 통합
+prompt_text = """
 [역할]
 너는 제주도 렌트카 업체의 외국인 및 주한미군 서류 검수 전문가야. 고객이 제출한 서류를 분석하여 대한민국 법규 및 업체 규정에 따른 대여 가능 여부를 엄격하게 판독해.
 
@@ -46,22 +49,31 @@ Class 2 (Commercial): 11~15인승 승합차 가능.
 입국/신분|입국일 1년 미만 또는 USFK 신분 확인|[확인 완료 / 미달]
 면허 유효성|IDP 유형 및 유효기간 / USFK 면허 상태|[정상 / 불량]
 운행 가능 인승|요청 차량 대비 면허 등급(Class) 확인|[9인승 이하 / 15인승까지]
-"""
-)
 
-# 2. 화면 구성
+[분석 요청]
+위 기준에 따라, 내가 지금 첨부한 서류 사진들을 정밀 분석해서 최종 판정표를 작성해줘.
+"""
+
+# 4. 앱 화면 구성
 st.set_page_config(page_title="서류 검수 매니저", layout="centered")
 st.title("🚗 외국인 서류 검수 시스템")
 st.info("여권, 국제면허증, 로컬면허증 사진을 모두 업로드해주세요.")
 
-# 3. 기능 실행
+# 5. 서류 검수 실행 로직
 uploaded_files = st.file_uploader("사진을 선택하세요 (여러 장 가능)", type=['png', 'jpg', 'jpeg'], accept_multiple_files=True)
 
 if st.button("검수 시작"):
     if uploaded_files:
         with st.spinner('AI가 서류를 정밀 분석 중입니다...'):
-            images = [Image.open(f) for f in uploaded_files]
-            response = model.generate_content(["제출된 사진들을 분석해서 최종 판정표를 작성해줘.", *images])
-            st.markdown(response.text)
+            try:
+                # 사진들을 열고 지시문과 하나로 합치기
+                images = [Image.open(f) for f in uploaded_files]
+                request_contents = [prompt_text] + images
+                
+                # 분석 요청
+                response = model.generate_content(request_contents)
+                st.markdown(response.text)
+            except Exception as e:
+                st.error(f"오류가 발생했습니다: {e}")
     else:
         st.warning("분석할 사진을 먼저 올려주세요.")
