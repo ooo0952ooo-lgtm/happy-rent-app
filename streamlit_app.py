@@ -60,3 +60,12 @@ if st.button("검수 시작"):
                 st.markdown(response.text)
             except Exception as e:
                 st.error(f"오류: {e}")
+
+# 앱 맨 아래쪽에 서명 추가하기
+st.markdown("---") # 얇은 가로줄을 하나 그어줍니다.
+st.markdown(
+    "<div style='text-align: center; color: #b0b0b0; font-size: 13px;'>"
+    "Designed & Developed by <b>Created by김성결</b> 💡"
+    "</div>", 
+    unsafe_allow_html=True
+)
