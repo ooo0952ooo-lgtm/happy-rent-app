@@ -7,7 +7,7 @@ from datetime import datetime  # 날짜를 가져오기 위한 도구
 today_date = datetime.now().strftime('%Y-%m-%d')
 
 # 2. API 키 및 모델 설정
-genai.configure(api_key="AIzaSyBsOs2nbWontgAPR9vmUhPd--csj35cPhE")
+genai.configure(api_key="AIzaSyDoTAUwFFLp9HF_TQNr0GNS5XdlH0fUKqI")
 model = genai.GenerativeModel('gemini-2.5-flash')
 
 # 3. 지시문에 오늘 날짜 주입하기
