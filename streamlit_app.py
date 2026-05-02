@@ -1,13 +1,20 @@
 import streamlit as st
 import google.generativeai as genai
 from PIL import Image
-from datetime import datetime  # 날짜를 가져오기 위한 도구
+from datetime import datetime
 
-# 1. 오늘 날짜 자동으로 가져오기
+# 오늘 날짜 자동 가져오기
 today_date = datetime.now().strftime('%Y-%m-%d')
 
-# 2. API 키 및 모델 설정
-genai.configure(api_key="AIzaSyDUKshpdfxFCER-XfPOXCsyAqmKG7eWNFU")
+# 수정된 부분: 직접 키를 적지 않고 Streamlit 설정값에서 가져옵니다.
+# 'GOOGLE_API_KEY'라는 이름의 비밀 열쇠를 사용합니다.
+try:
+    API_KEY = st.secrets["GOOGLE_API_KEY"]
+    genai.configure(api_key=API_KEY)
+except:
+    st.error("API 키 설정이 필요합니다. Streamlit Cloud 설정에서 Secrets를 추가해주세요.")
+    st.stop()
+
 model = genai.GenerativeModel('gemini-2.5-flash')
 
 # 3. 지시문에 오늘 날짜 주입하기
