@@ -44,7 +44,7 @@ prompt_text = f"""
 """
 
 # 4. 앱 화면 구성 및 실행 로직 (기존과 동일)
-st.set_page_config(page_title="제주 서류 검수기", layout="centered")
+st.set_page_config(page_title="해피 외국인 서류검수", layout="centered")
 st.title("🔍외국인 서류 검수 시스템")
 st.write(f"📅 오늘 날짜 {today_date}") # 화면에도 오늘 날짜를 표시해줍니다.
 
