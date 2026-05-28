@@ -19,7 +19,7 @@ model = genai.GenerativeModel('gemini-2.5-flash')
 
 # 3. 지시문에 오늘 날짜 주입하기
 # f""" 를 사용하면 {today_date} 자리에 실제 오늘 날짜가 쏙 들어갑니다.
-prompt_text = """
+prompt_text = f"""
 [역할]
 너는 제주도 렌트카 업체의 외국인 및 주한미군 서류 검수 전문가야. 고객이 제출한 서류를 분석하여 대한민국 법규 및 업체 규정에 따른 대여 가능 여부를 엄격하게 판독해.
 
