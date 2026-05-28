@@ -4,7 +4,7 @@ from PIL import Image
 from datetime import datetime
 
 # 오늘 날짜 자동 가져오기
-{today_date} = datetime.now().strftime('%Y-%m-%d')
+today_date = datetime.now().strftime('%Y-%m-%d')
 
 # 수정된 부분: 직접 키를 적지 않고 Streamlit 설정값에서 가져옵니다.
 # 'GOOGLE_API_KEY'라는 이름의 비밀 열쇠를 사용합니다.
